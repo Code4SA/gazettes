@@ -46,8 +46,19 @@ Monthly Gazette Index- access denied
 "Since there are many gazette editions additional to the weekly gazette, the GPW compiles an index of all gazettes published during a month. This is a service to the public, to assist interested parties in keeping track of all editions.""
 
 
-#JSON:
-fields:
+#JSON template:
+https://openc.github.io/openc-schema/docson/index.html#https://raw.githubusercontent.com/openc/openc-schema/master/build/gazette-notice-schema.json$$expand
 
-notice_info- states what the published information is about (keywords aid identification)
-               e.g. health, land rights
+
+
+# requirements:
+
+written in Python3
+
+pip install:
+
+- pdfminer3k v. 1.3.0 (Python3)
+  note: there are significant API differences between versions and is very different
+  to pdfminer (Python2)
+
+- jsonpickle
