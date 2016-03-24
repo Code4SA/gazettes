@@ -1,4 +1,4 @@
-# gazettes
+# Types of gazettes:
 
 ## Government
 
@@ -23,13 +23,12 @@ http://www.gpwonline.co.za/Gazettes/Pages/Published-Separate-Gazettes.aspx
 - energy
 - small business
 
-### legal
-### liquor
-### tender bulletins
+## legal
+## liquor
+## tender bulletins
 
 ## Provincial
-only:
-
+- North West
 - Limpopo
 - NCape
 - ECape
@@ -53,6 +52,8 @@ pip install:
   note: there are significant API differences between versions and is very different
   to pdfminer (Python2)
 
+-  libxml2dom (parsing DOM)
+
 - jsonpickle
 https://jsonpickle.github.io/
 
@@ -68,13 +69,8 @@ e.g. month/year queries
 - url field is not gazette specific
 - parse notice summary: for now it's all found in the outline (keywords, select English)
 - in the documents tested so far, just one scenario does not recover all
-  pages from the outline section: when different lines of text referring to
-    the pages where the notices are come as a single sentence joined by multiple-dots.
-`
-    noticeX .... pageX
-    noticeY ... pageY
-`
-    is in fact stored as:
+  pages from the outline section: different lines of text referring to
+    the pages with notices are stored as a single sentence joined by multiple-dots
 
     `
          noticeX.... page X ..... noticeY....... page Y .... etc
@@ -83,6 +79,9 @@ e.g. month/year queries
     and notice descriptions can be parsed directly from the pages.
     However, if at later stages we need a direct link between notice description
     and pages, this should be fixed.
+
+- validating JSON against JSON Schema (in folder)
+
 
 - some gazettes have notices as figures, so special parsing is needed
 e.g. 2667_18-3_MpumalangaSeparate.pdf or the Presidency contains signed docs
