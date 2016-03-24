@@ -57,15 +57,16 @@ pip install:
 - jsonpickle
 https://jsonpickle.github.io/
 
-# improvements and fixes:
-- splitting the date field?
+# Notes:
 There is a document called Monthly Gazette Index to which access is denied:
 
 "Since there are many gazette editions additional to the weekly gazette, the GPW compiles an index of all gazettes published during a month. This is a service to the public, to assist interested parties in keeping track of all editions.""
 
-Might be good to split date into separate fields for day, month, year to make
-e.g. month/year queries
+To facilitate fetching gazettes by specific year or month,
+the publication date was split into separate fields keeping month/year as the main
+JSON entry. The full date is included in 'other_attributes'
 
+# improvements and fixes:
 - url field is not gazette specific
 - parse notice summary: for now it's all found in the outline (keywords, select English)
 - in the documents tested so far, just one scenario does not recover all
@@ -81,7 +82,7 @@ e.g. month/year queries
     and pages, this should be fixed.
 
 - validating JSON against JSON Schema (in folder)
-
+- add day the doc was fetched
 
 - some gazettes have notices as figures, so special parsing is needed
 e.g. 2667_18-3_MpumalangaSeparate.pdf or the Presidency contains signed docs
