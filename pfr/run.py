@@ -26,7 +26,7 @@ if __name__ == '__main__':
             info, device, pages_skipped = get_info_outline(fp)
             print(info)
             #pages_skipped should be pages for extraction- for now is to montitore problems
-            gaz_dict = save_to_dict(device.interesting_text, device.aux_text, \
+            gaz_dict = save_to_dict(set(device.interesting_text), device.aux_text, \
                     pages_skipped, info, device.page_number, url)
             print(gaz_dict)
             utils.write_db(collection, gaz_dict)

@@ -3,5 +3,6 @@ note: pilot version for Nat. Reg.
 
 # TO DO
 - more specific dict for outline
-- rewrite using classes: class per gazette type
+- Issn sometimes is undetected (image?)- adjust for that
+- rewrite using classes and objects: class per gazette type
 - switch to PostgreSQL

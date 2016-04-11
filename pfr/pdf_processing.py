@@ -76,9 +76,25 @@ def scrape_gazette_names(url_sub):
             pass # no more webpages - assumes that no pages are broken in the middle
     return gazette_names
 
+def afr_eng_dict():
+
+    dict_months = {}
+    dict_months['januarie'] = 'january'
+    dict_months['februarie'] = 'february'
+    dict_months['maart'] = 'march'
+    dict_months['mei'] = 'may'
+    dict_months['junie'] = 'june'
+    dict_months['julie'] = 'july'
+    dict_months['augustus'] = 'august'
+    dict_months['oktober'] = 'october'
+    dict_months['desember'] = 'december'
+
+    return dict_months
+
 def extract_gazette_info(dev_info):
 
     class_info = []
+    dict_months = afr_eng_dict()
 
     for i in range(len(dev_info)):
 
@@ -97,11 +113,30 @@ def extract_gazette_info(dev_info):
         try:
             date_re = re.search(r'\d{1,}[ ][A-Za-z]{3,}[ ]\d{4}', entry, re.IGNORECASE).string#.split(' ')
             if date_re and ('gazette' in date_re):
+
                     date = date_re.split(',')
 
-                    class_info.append(date[0])
-                    class_info.append(date[1])
+                    class_info.append(date[0]) # add info about gazette
+                    class_info.append(date[1]).lstrip())
 
+            if date_re:
+                    date_str = date_re.lstrip().split(',')
+                    if len(date_str) == 2: # name before the date
+                        date = date_str[1] # take the 2nd element
+
+                    else:
+                        date = date_str # date is all there is
+                    date_tok = date.lstrip().split(' ')
+
+                    try:
+                        dict_months[date_tok[1]] # month needs to be translated
+                        date_tok[1] = dict_months[date_tok[1]]
+
+                    except:
+                        pass
+
+                    class_info.append(date_tok[0] + ' ' + date_tok[1] + ' ' + date_tok[2])
+                     
         except:
             pass
 
